@@ -1,6 +1,7 @@
 package com.lizehao.watermelondiarynew.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,12 +36,10 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
     }
     @Override
     public DiaryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DiaryViewHolder(mLayoutInflater.inflate(R.layout.item_rv_diary, parent, false));
+        return new DiaryViewHolder(mLayoutInflater.inflate(R.layout.item_rv_diary, null));
     }
-
     @Override
     public void onBindViewHolder(final DiaryViewHolder holder, final int position) {
-
         String dateSystem = GetDate.getDate().toString();
         if(mDiaryBeanList.get(position).getDate().equals(dateSystem)){
             holder.mIvCircle.setImageResource(R.drawable.circle_orange);
@@ -56,26 +55,22 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
                     holder.mIvEdit.setVisibility(View.VISIBLE);
                 }else {
                     holder.mIvEdit.setVisibility(View.INVISIBLE);
-
                 }
             }
         });
-
         holder.mIvEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new StartUpdateDiaryEvent(position));
+                holder.mIvEdit.setVisibility(View.INVISIBLE);
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return mDiaryBeanList.size();
     }
-
     public static class DiaryViewHolder extends RecyclerView.ViewHolder{
-
         TextView mTvDate;
         TextView mTvTitle;
         TextView mTvContent;
@@ -85,7 +80,6 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
         ImageView mIvCircle;
         LinearLayout mLlControl;
         RelativeLayout mRlEdit;
-
         DiaryViewHolder(View view){
             super(view);
             mIvCircle = (ImageView) view.findViewById(R.id.main_iv_circle);

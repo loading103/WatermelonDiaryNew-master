@@ -3,23 +3,17 @@
     android:id="@+id/main_rl_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    tools:context=".ui.MainActivity"
-    >
-
-
+    android:paddingBottom="10dp">
     <LinearLayout
         android:id="@+id/main_ll_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-
+        android:background="#55ffffff"
+        android:orientation="vertical">
         <include
             layout="@layout/part_common_title"
             />
@@ -27,34 +21,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:id="@+id/item_first"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="vertical"
-                      android:paddingRight="10dp"
-                      android:background="@color/white"
-            >
-
-
+        <LinearLayout
+            android:id="@+id/item_first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="10dp"
+            android:background="@color/white">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10.8dp"
-                android:background="#ffffff"
-                >
-
+                android:background="#ffffff">
                 <ImageView
                     android:id="@+id/main_iv_circle"
                     android:paddingTop="2dp"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:src="@drawable/circle_orange"
-                    android:layout_gravity="center_vertical"
-                    />
-
+                    android:layout_gravity="center_vertical" />
                 <TextView
                     android:id="@+id/main_tv_date"
                     android:layout_width="0dp"
@@ -64,9 +50,7 @@
                     android:paddingLeft="4dp"
                     android:paddingTop="5dp"
                     android:text="2017年01月18日"
-                    android:textSize="14sp"
-                    />
-
+                    android:textSize="14sp" />
             </LinearLayout>
 
 
@@ -114,6 +98,7 @@
             android:id="@+id/main_rv_show_diary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#55ffffff"
             >
 
         </android.support.v7.widget.RecyclerView>

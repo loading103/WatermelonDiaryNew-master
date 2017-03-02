@@ -2,146 +2,129 @@ package com.lizehao.watermelondiarynew.ui;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lizehao.watermelondiarynew.R;
+import com.lizehao.watermelondiarynew.bean.DiaryBean;
 import com.lizehao.watermelondiarynew.db.DiaryDatabaseHelper;
 import com.lizehao.watermelondiarynew.utils.GetDate;
 import com.lizehao.watermelondiarynew.utils.StatusBarCompat;
 import com.lizehao.watermelondiarynew.widget.LinedEditText;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cc.trity.floatingactionbutton.FloatingActionButton;
-import cc.trity.floatingactionbutton.FloatingActionsMenu;
-
-/**
- * Created by 李 on 2017/1/26.
- */
 public class AddDiaryActivity extends AppCompatActivity {
-
-
     @Bind(R.id.add_diary_tv_date)
     TextView mAddDiaryTvDate;
     @Bind(R.id.add_diary_et_title)
     EditText mAddDiaryEtTitle;
     @Bind(R.id.add_diary_et_content)
     LinedEditText mAddDiaryEtContent;
-    @Bind(R.id.add_diary_fab_back)
-    FloatingActionButton mAddDiaryFabBack;
-    @Bind(R.id.add_diary_fab_add)
-    FloatingActionButton mAddDiaryFabAdd;
-
-    @Bind(R.id.right_labels)
-    FloatingActionsMenu mRightLabels;
     @Bind(R.id.common_tv_title)
     TextView mCommonTvTitle;
-    @Bind(R.id.common_title_ll)
-    LinearLayout mCommonTitleLl;
-    @Bind(R.id.common_iv_back)
-    ImageView mCommonIvBack;
-    @Bind(R.id.common_iv_test)
-    ImageView mCommonIvTest;
-
     private DiaryDatabaseHelper mHelper;
-
-    public static void startActivity(Context context) {
-        Intent intent = new Intent(context, AddDiaryActivity.class);
-        context.startActivity(intent);
-    }
-
-    public static void startActivity(Context context, String title, String content) {
-        Intent intent = new Intent(context, AddDiaryActivity.class);
-        intent.putExtra("title", title);
-        intent.putExtra("content", content);
-        context.startActivity(intent);
-    }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_add_diary);
         ButterKnife.bind(this);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-        Intent intent = getIntent();
-        mAddDiaryEtTitle.setText(intent.getStringExtra("title"));
         StatusBarCompat.compat(this, Color.parseColor("#161414"));
 
+        mHelper = new DiaryDatabaseHelper(this, "Diary.db", null, 1);
 
         mCommonTvTitle.setText("添加日记");
         mAddDiaryTvDate.setText("今天，" + GetDate.getDate());
-        mAddDiaryEtContent.setText(intent.getStringExtra("content"));
-        mHelper = new DiaryDatabaseHelper(this, "Diary.db", null, 1);
+
+        mAddDiaryEtTitle.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length()>=50){
+                    Toast.makeText(AddDiaryActivity.this, "标题最多输入50字", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
-
-
-    @OnClick({R.id.common_iv_back, R.id.add_diary_et_title, R.id.add_diary_et_content, R.id.add_diary_fab_back, R.id.add_diary_fab_add})
+    @OnClick({R.id.common_iv_back, R.id.add_diary_fab_back, R.id.add_diary_fab_add})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.common_iv_back:
-                MainActivity.startActivity(this);
-            case R.id.add_diary_et_title:
-                break;
-            case R.id.add_diary_et_content:
+                finish();
                 break;
             case R.id.add_diary_fab_back:
-                String date = GetDate.getDate().toString();
-                String title = mAddDiaryEtTitle.getText().toString() + "";
-                String content = mAddDiaryEtContent.getText().toString() + "";
-                if (!title.equals("") || !content.equals("")) {
-                    SQLiteDatabase db = mHelper.getWritableDatabase();
-                    ContentValues values = new ContentValues();
-                    values.put("date", date);
-                    values.put("title", title);
-                    values.put("content", content);
-                    db.insert("Diary", null, values);
-                    values.clear();
-                }
-                MainActivity.startActivity(this);
+                Verify();
+                saveData();
+                finish();
                 break;
             case R.id.add_diary_fab_add:
-                final String dateBack = GetDate.getDate().toString();
-                final String titleBack = mAddDiaryEtTitle.getText().toString();
-                final String contentBack = mAddDiaryEtContent.getText().toString();
-                if(!titleBack.isEmpty() || !contentBack.isEmpty()){
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                     alertDialogBuilder.setMessage("是否保存日记内容？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            SQLiteDatabase db = mHelper.getWritableDatabase();
-                            ContentValues values = new ContentValues();
-                            values.put("date", dateBack);
-                            values.put("title", titleBack);
-                            values.put("content", contentBack);
-                            db.insert("Diary", null, values);
-                            values.clear();
-                            MainActivity.startActivity(AddDiaryActivity.this);
+                            Verify();
+                            saveData();
+                            finish();
                         }
                     }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.startActivity(AddDiaryActivity.this);
+                            finish();
                         }
                     }).show();
-                }else{
-                    MainActivity.startActivity(this);
-                }
-
                 break;
         }
+    }
+    public String getTitle1(){
+        return mAddDiaryEtTitle.getText().toString();
+    }
+    public String getContent1(){
+        return mAddDiaryEtContent.getText().toString();
+    }
+    public String getData(){
+        return GetDate.getDate().toString();
+    }
+    public void showToast(String ms){
+        Toast.makeText(this, ms, Toast.LENGTH_SHORT).show();
+    }
+    public void Verify(){
+        if(TextUtils.isEmpty(getTitle1())){
+            showToast("标题不能为空");
+            return;
+        }else  if(TextUtils.isEmpty(getContent1())){
+            showToast("内容不能为空");
+            return;
+        }
+    }
+    public void saveData(){
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("date", getData());
+        values.put("title", getTitle1());
+        values.put("content", getContent1());
+        db.insert("Diary", null, values);
+        EventBus.getDefault().post("11");
+        values.clear();
     }
 }
 

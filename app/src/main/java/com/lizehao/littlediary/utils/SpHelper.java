@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.utils;
+package com.lizehao.littlediary.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

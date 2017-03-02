@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.lizehao.watermelondiarynew"
+        applicationId "com.lizehao.littlediary"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1

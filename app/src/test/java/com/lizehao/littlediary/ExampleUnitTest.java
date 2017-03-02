@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew;
+package com.lizehao.littlediary;
 
 import org.junit.Test;
 

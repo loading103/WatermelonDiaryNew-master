@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.widget;
+package com.lizehao.littlediary.widget;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

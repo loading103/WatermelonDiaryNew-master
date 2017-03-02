@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.utils;
+package com.lizehao.littlediary.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

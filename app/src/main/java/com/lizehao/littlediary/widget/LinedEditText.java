@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.widget;
+package com.lizehao.littlediary.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

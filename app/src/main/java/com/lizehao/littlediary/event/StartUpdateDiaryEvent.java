@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.event;
+package com.lizehao.littlediary.event;
 
 /**
  * Created by 李 on 2017/1/26.

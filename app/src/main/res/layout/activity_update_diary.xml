@@ -37,7 +37,7 @@
                 android:paddingRight="20dp"
                 android:textSize="14sp"
                 android:scrollbars="vertical" />
-            <com.lizehao.watermelondiarynew.widget.LinedEditText
+            <com.lizehao.littlediary.widget.LinedEditText
                 android:id="@+id/update_diary_et_content"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

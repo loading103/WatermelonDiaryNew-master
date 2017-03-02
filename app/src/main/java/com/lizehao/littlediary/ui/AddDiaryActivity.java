@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.ui;
+package com.lizehao.littlediary.ui;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -17,12 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lizehao.watermelondiarynew.R;
-import com.lizehao.watermelondiarynew.bean.DiaryBean;
-import com.lizehao.watermelondiarynew.db.DiaryDatabaseHelper;
-import com.lizehao.watermelondiarynew.utils.GetDate;
-import com.lizehao.watermelondiarynew.utils.StatusBarCompat;
-import com.lizehao.watermelondiarynew.widget.LinedEditText;
+import com.lizehao.littlediary.R;
+import com.lizehao.littlediary.db.DiaryDatabaseHelper;
+import com.lizehao.littlediary.utils.GetDate;
+import com.lizehao.littlediary.utils.StatusBarCompat;
+import com.lizehao.littlediary.widget.LinedEditText;
 
 import org.greenrobot.eventbus.EventBus;
 

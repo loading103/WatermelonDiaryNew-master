@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.db;
+package com.lizehao.littlediary.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

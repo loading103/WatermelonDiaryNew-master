@@ -1,39 +1,31 @@
-package com.lizehao.watermelondiarynew.ui;
+package com.lizehao.littlediary.ui;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lizehao.watermelondiarynew.R;
-import com.lizehao.watermelondiarynew.bean.DiaryBean;
-import com.lizehao.watermelondiarynew.db.DiaryDatabaseHelper;
-import com.lizehao.watermelondiarynew.utils.GetDate;
-import com.lizehao.watermelondiarynew.utils.StatusBarCompat;
-import com.lizehao.watermelondiarynew.widget.LinedEditText;
+import com.lizehao.littlediary.R;
+import com.lizehao.littlediary.db.DiaryDatabaseHelper;
+import com.lizehao.littlediary.utils.GetDate;
+import com.lizehao.littlediary.utils.StatusBarCompat;
+import com.lizehao.littlediary.widget.LinedEditText;
 
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cc.trity.floatingactionbutton.FloatingActionButton;
-import cc.trity.floatingactionbutton.FloatingActionsMenu;
 
 /**
  * Created by 李 on 2017/1/26.

@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.widget;
+package com.lizehao.littlediary.widget;
 
 /**
  * Created by admin on 2017/3/2.

@@ -1,7 +1,6 @@
-package com.lizehao.watermelondiarynew.ui;
+package com.lizehao.littlediary.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.lizehao.watermelondiarynew.R;
-import com.lizehao.watermelondiarynew.bean.DiaryBean;
-import com.lizehao.watermelondiarynew.event.StartUpdateDiaryEvent;
-import com.lizehao.watermelondiarynew.utils.GetDate;
+import com.lizehao.littlediary.R;
+import com.lizehao.littlediary.bean.DiaryBean;
+import com.lizehao.littlediary.event.StartUpdateDiaryEvent;
+import com.lizehao.littlediary.utils.GetDate;
 
 import org.greenrobot.eventbus.EventBus;
 

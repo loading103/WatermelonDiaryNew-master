@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.bean;
+package com.lizehao.littlediary.bean;
 
 /**
  * Created by 李 on 2017/1/26.

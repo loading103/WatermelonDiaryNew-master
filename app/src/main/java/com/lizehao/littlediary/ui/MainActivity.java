@@ -1,11 +1,10 @@
-package com.lizehao.watermelondiarynew.ui;
+package com.lizehao.littlediary.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,15 +12,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.lizehao.watermelondiarynew.R;
-import com.lizehao.watermelondiarynew.bean.DiaryBean;
-import com.lizehao.watermelondiarynew.db.DiaryDatabaseHelper;
-import com.lizehao.watermelondiarynew.event.StartUpdateDiaryEvent;
-import com.lizehao.watermelondiarynew.utils.GetDate;
-import com.lizehao.watermelondiarynew.utils.StatusBarCompat;
-import com.lizehao.watermelondiarynew.widget.RecyclerViewItemSpaces;
+import com.lizehao.littlediary.R;
+import com.lizehao.littlediary.bean.DiaryBean;
+import com.lizehao.littlediary.db.DiaryDatabaseHelper;
+import com.lizehao.littlediary.event.StartUpdateDiaryEvent;
+import com.lizehao.littlediary.utils.GetDate;
+import com.lizehao.littlediary.utils.StatusBarCompat;
+import com.lizehao.littlediary.widget.RecyclerViewItemSpaces;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

@@ -1,4 +1,4 @@
-package com.lizehao.watermelondiarynew.utils;
+package com.lizehao.littlediary.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
